@@ -1,5 +1,5 @@
 import pytest
-from send_mail.sendmail import SendMail, send_mail_sendgrid
+from mail_service.sendmail import SendMail, send_mail_sendgrid
 from unittest import mock
 
 mail= {'''
@@ -10,7 +10,7 @@ mail= {'''
     "html_content":"<strong>html content </strong>" 
 '''}
 
-@mock.patch('send_mail.sendmail.SendMail.send_mail', return_value=mail)
+@mock.patch('mail_service.sendmail.SendMail.send_mail', return_value=mail)
 def test_send_mail(mocker):
     SendMail.send_mail(mail)
     mocker.assert_called_once_with(mail)
